@@ -17,7 +17,7 @@ module.exports = async (lilla: Lilla): Promise<void> => {
     const rest_client: REST = new REST().setToken(lilla.TOKEN);
 
     try {
-        const data: any = await rest_client.put(
+        await rest_client.put(
             Routes.applicationGuildCommands(lilla.client.user.id, "1309275524652073080"),
             { body: commands }
         );
@@ -27,7 +27,7 @@ module.exports = async (lilla: Lilla): Promise<void> => {
             { body: commands }
         );
 
-        console.log(`Successfully reloaded ${data.length} guild and application (/) commands.`);
+        console.log(`Successfully reloaded ${command_files.length} guild and application (/) commands.`);
     } catch (err: unknown) {
         console.log(err);
     }
