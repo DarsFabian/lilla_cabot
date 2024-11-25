@@ -37,7 +37,7 @@ module.exports = {
         const question_index = Math.floor(Math.random() * lilla.questions_emb.length);
         const question: { q: string, r: string } = lilla.questions_emb[question_index];
 
-        const delay = interaction.options.getNumber("delay", false) | 60_000;
+        const delay = (interaction.options.getNumber("delay", false) | 60) * 1_000;
 
         const channel: TextChannel = await lilla.client.channels.fetch(interaction.channelId) as TextChannel;
         const collector: MessageCollector = channel.createMessageCollector(
