@@ -1,4 +1,4 @@
-import { Client, ChatInputCommandInteraction } from "discord.js"
+import { Client, ChatInputCommandInteraction } from "discord.js";
 
 export type LillaCommandCallback = (
     interaction: ChatInputCommandInteraction,
@@ -8,6 +8,6 @@ export type LillaCommandCallback = (
 export type Lilla = {
     client: Client,
     TOKEN: string,
-    questions_emb: {q: string, r: string}[],
+    questions_emb: { q: string, r: string }[],
     commands: Map<string, LillaCommandCallback>,
 }

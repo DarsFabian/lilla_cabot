@@ -11,7 +11,8 @@ export default [
     }
   },
   {
-    ignores: ["node_modules/", "build/"]
+    ignores: ["node_modules/", "build/"],
+    files: ["src/**/*", "types/**/*"]
   },
   { files: ["**/*.{js,mjs,cjs,ts}"] },
   { files: ["**/*.js"], languageOptions: { sourceType: "script" } },

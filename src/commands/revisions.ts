@@ -35,7 +35,7 @@ module.exports = {
     data: command,
     async callback(interaction: ChatInputCommandInteraction, lilla: Lilla): Promise<void> {
         const question_index = Math.floor(Math.random() * lilla.questions_emb.length);
-        const question: any = lilla.questions_emb[question_index];
+        const question: { q: string, r: string } = lilla.questions_emb[question_index];
 
         const delay = interaction.options.getNumber("delay", false) | 60_000;
 
