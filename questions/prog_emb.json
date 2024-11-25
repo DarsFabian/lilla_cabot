@@ -1,0 +1,144 @@
+{
+    "questions": [
+        {
+            "q": "Combien de ports possède la carte Arduino UNO? Quelles sont leur spécificité?",
+            "r": "Elle possède **3 ports bidirectionnels**."
+        },
+        {
+            "q": "Quelle est la fréquence du quartz sur la carte Arduino UNO?",
+            "r": "16MHz. 16x10^6 Hz donc."
+        },
+        {
+            "q": "Quelle valeur doit prendre le bit PUD du registre MCUCR (MCU Control Register) afin de désactiver toutes les résistances de pull-up?",
+            "r": "Le bit PUD doit prendre la valeur 1."
+        },
+        {
+            "q": "Quelle valeur doit prendre le bit PUD du registre MCUCR (MCU Control Register) afin de désactiver toutes les résistances de pull-up?",
+            "r": "Le bit PUD doit prendre la valeur 1."
+        },
+        {
+            "q": "Quel qualificatif de type doit-on spécifier quand une variable est utilisée dans une routine d'interruption?",
+            "r": "Volatile."
+        },
+        {
+            "q": "Le composant ATmega328P, que l'on trouve sur la carte Arduino Uno, appartient à la famille des?",
+            "r": "Microcontrolleurs."
+        },
+        {
+            "q": "Une résistance de Pull Up permet de?",
+            "r": "Ramener un '1' sur une entrée d'un port."
+        },
+        {
+            "q": "Comment s'appelle le registre permettant de définir si le bit d'un port est en entrée ou en sortie? Quelle valeur doit prendre le bit pour qu'un port soit en sortie?",
+            "r": "DDRB (Data direction register, ici pour le port B). Pour que le port soit en sortie, le bit doit être mis à 1."
+        },
+        {
+            "q": "Quelle interruption est prioritaire entre INT0 et TIMER2 OVF?",
+            "r": "INT0."
+        },
+        {
+            "q": "Quelle interruption est prioritaire entre TIMER2 OVF et TIMER1 OVF?",
+            "r": "Timer2OVF."
+        },
+        {
+            "q": "Comment s'appelle la fonction pour activer les interruptions?",
+            "r": "sei()"
+        },
+        {
+            "q": "Comment s'appelle la fonction pour désactiver les interruptions?",
+            "r": "cli()"
+        },
+        {
+            "q": "Quelle est la structure des noms des vecteurs d'interruption en C?",
+            "r": "NOMDUVECTEUR_vect. Exemple: `INTO_vect` ou bien `TIMER2_OVF_vect`"
+        },
+        {
+            "q": "Quelle est l'utilité du registre EICRA? Que veut dire EICRA?",
+            "r": "Ils permettent le choix de la cause de l'interruption pour `INT0` et `INT1`. EICRA veut dire `External Interrupt Control Register A`."
+        },
+        {
+            "q": "Quels bits de EICRA faut-il modifier pour changer la cause d'interruption de INT0? Et INT1?",
+            "r": "Afin de modifier la cause d'interruption de INT0 il faut changer les bits `EIRCRA0` et `EICRA1`. `EICRA2` et `EICRA3` servent à modifier la cause d'interruption de `INT1`."
+        },
+        {
+            "q": "Le registre EICRA est défini comme suit: 1001. Pour rappel, le bit le plus à gauche est EICRA3 et le bit le plus à droite est EICRA0. Que vient-on de définir comme comportement?",
+            "r": "`Le front descendant de INT1` génère une interruption (défini par EICRA3 = 1 et EICRA2 = 0) et le changement d'état de INT0 génère lui aussi une interruption (défini par EICRA1 = 0 et EICRA0 = 1)."
+        },
+        {
+            "q": "Quelle action sur INT0 déclenche une interruption si EICRA1 = 0 et EICRA0 = 1?",
+            "r": "Le changement d'état de INT0."
+        },
+        {
+            "q": "Quelle action sur INT0 déclenche une interruption si EICRA1 = 1 et EICRA0 = 1?",
+            "r": "Un front montant sur INT0."
+        },
+        {
+            "q": "Quelle action sur INT0 déclenche une interruption si EICRA1 = 1 et EICRA0 = 0?",
+            "r": "Un front descendant sur INT0."
+        },
+        {
+            "q": "Quelle action sur INT0 déclenche une interruption si EICRA1 = 0 et EICRA0 = 0?",
+            "r": "L'état LOW de INT0."
+        },
+        {
+            "q": "Quel est le vecteur d'interruption le plus prioritaire?",
+            "r": "Le RESET."
+        },
+        {
+            "q": "Sur quels pins se trouvent INT0 et INT1 respectivement?",
+            "r": "PD2 et PD3."
+        },
+        {
+            "q": "A quoi sert le registre EIMSK? Que veut dire EIMSK?",
+            "r": "EIMSK sert à activer ou désactiver les interruptions sur INT0 et INT1. Si le bit EIMSK0 est à 1 alors les interruptions sont activées sur INT0. De même pour EIMSK1 et INT1. EIMSK Veut dire External Interrupt Mask Register."
+        },
+        {
+            "q": "Que veut dire EIFR? Quelle est l'utilité de ce registre?",
+            "r": "Lorsqu'une cause d'interruption est détectée, un flag de EIFR est mis à 1. Par exemple, si INT0 vient de générer une interruption, le bit EIFR0 sera mis à 1. De même, si INT1 vient de générer une interruption, le bit EIFR1 sera mis à 1."
+        },
+        {
+            "q": "Que fait l'instruction `EICRA |= 0x1`?",
+            "r": "Cette instruction met le bit EICRA0 à 1 sans modifier les autres bits. 0x1 en binaire = 01. Oui en effet ça permet aussi de déclencher une interruption si INT0 change d'état, c'est aussi correct."
+        },
+        {
+            "q": "Que fait l'instruction `EICRA |= 0x2`?",
+            "r": "Cette instruction met le bit EICRA1 à 1 sans modifier les autres bits. 0x2 en binaire = 10. Oui en effet ça permet aussi de déclencher une interruption si INT0 est sur un front descendant, c'est aussi correct."
+        },
+        {
+            "q": "Que fait l'instruction `EICRA |= 0x3`?",
+            "r": "Cette instruction met le bit EICRA0 et EICRA1 à 1 sans modifier les autres bits. 0x3 en binaire = 11. Oui en effet ça permet aussi de déclencher une interruption si INT0 est sur un front montant, c'est aussi correct."
+        },
+        {
+            "q": "Réecrire cette instruction `pinMode(13, OUTPUT);` avec les registres:",
+            "r": "DDRB |= B100000;\nPORTB &= ~(1<<PORTB5);"
+        },
+        {
+            "q": "Réecrire cette instruction `pinMode(13, OUTPUT);` avec les registres:",
+            "r": "DDRB |= B100000;\nPORTB &= ~(1<<PORTB5);"
+        },
+        {
+            "q": "Quelle fonction permet de savoir le nombre de milisecondes durant lesquelles la carte Arduino Uno a fonctionné?",
+            "r": "millis()"
+        },
+        {
+            "q": "Si PORTB3 = 1, DDRB3 = 0 et le bit PUD du MCUCR = 1 on a?",
+            "r": "Pas de pullup interne sur PORTB3 car le bit PUD est mis à 1."
+        },
+        {
+            "q": "Si PORTB3 = 1, DDRB3 = 0 et le bit PUD du MCUCR = 0 on a?",
+            "r": "Une pullup interne sur PORTB3."
+        },
+        {
+            "q": "Si PORTB3 = 0, DDRB3 = 1 et le bit PUD du MCUCR = 0 on a?",
+            "r": "Pas de pullup interne sur PORTB3."
+        },
+        {
+            "q": "Si PORTB3 = 0, DDRB3 = 1 et le bit PUD du MCUCR = 1 on a?",
+            "r": "Pas de pullup interne sur PORTB3 car le bit PUD est mis à 1."
+        },
+        {
+            "q": "Que permet de faire le bit PUD du MCUCR?",
+            "r": "Activer ou désactiver les pullup internes. Si le bit PUD est mis à 1, alors les pullup internes sont désactivées pour tous les ports, peu importe la configuration de PORTXn et DDRXn."
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "include": [
+        "./src/**/*"
+    ],
+    "buildOptions": {
+        "verbose": true,
+        "traceResolution": true
+    },
+    "compilerOptions": {
+        "outDir": "./build",
+        "module": "CommonJS",
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "target": "ES2023",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "isolatedModules": false,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": false,
+        "noUncheckedIndexedAccess": true,
+        "strictFunctionTypes": true,
+        "useUnknownInCatchVariables": true,
+    },
+    "watchOptions": {
+        "watchDirectory": "dynamicPriorityPolling",
+        "excludeDirectories": [
+            "**/node_modules",
+            "_build",
+            "temp/*"
+        ]
+    }
+}
