@@ -16,7 +16,7 @@ const delayOptions = new SlashCommandNumberOption()
 const command: SlashCommandBuilder = new SlashCommandBuilder()
     .setName("revisions")
     .setDescription("Commence tes révisions!")
-    .addNumberOption(delayOptions)
+    .addNumberOption(delayOptions) as SlashCommandBuilder;
 
 const next: ButtonBuilder = new ButtonBuilder()
     .setCustomId("Next")
