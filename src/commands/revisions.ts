@@ -1,9 +1,22 @@
-import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, TextChannel, MessageCollector, Message } from "discord.js";
+import {
+    SlashCommandBuilder, ActionRowBuilder, ButtonBuilder,
+    ButtonStyle, ChatInputCommandInteraction, TextChannel,
+    MessageCollector, Message, SlashCommandNumberOption
+} from "discord.js";
+
 import { Lilla } from "../../types/lilla";
+
+const delayOptions = new SlashCommandNumberOption()
+    .setMaxValue(60)
+    .setMinValue(10)
+    .setRequired(false)
+    .setDescription("Définis le temps (en secondes) avant de recevoir la correction")
+    .setName("delay");
 
 const command: SlashCommandBuilder = new SlashCommandBuilder()
     .setName("revisions")
-    .setDescription("Commence tes revisions!");
+    .setDescription("Commence tes révisions!")
+    .addNumberOption(delayOptions)
 
 const next: ButtonBuilder = new ButtonBuilder()
     .setCustomId("Next")
@@ -24,11 +37,13 @@ module.exports = {
         const question_index = Math.floor(Math.random() * lilla.questions_emb.length);
         const question: any = lilla.questions_emb[question_index];
 
+        const delay = interaction.options.getNumber("delay", false) | 60_000;
+
         const channel: TextChannel = await lilla.client.channels.fetch(interaction.channelId) as TextChannel;
         const collector: MessageCollector = channel.createMessageCollector(
             {
                 filter: (message: Message): boolean => { return message.author.id == interaction.user.id; },
-                time: 60_000,
+                time: delay,
                 max: 1
             }
         );
