@@ -1,7 +1,8 @@
 import { readdirSync } from "fs";
 import { REST, Routes } from "discord.js";
+import { Lilla } from "../../types/lilla";
 
-module.exports = async (_: any): Promise<void> => {
+module.exports = async (lilla: Lilla): Promise<void> => {
     const commands: string[] = [];
     let command_files: string[] = readdirSync("./src/commands");
 
@@ -10,19 +11,19 @@ module.exports = async (_: any): Promise<void> => {
     command_files.forEach((module: string) => {
         const command = require(`${__dirname}/${module}`);
         commands.push(command.data.toJSON());
-        _.commands[module] = command.callback;
+        lilla.commands.set(module, command.callback);
     });
 
-    const rest_client: REST = new REST().setToken(_.TOKEN);
+    const rest_client: REST = new REST().setToken(lilla.TOKEN);
 
     try {
         const data: any = await rest_client.put(
-            Routes.applicationGuildCommands(_.client.user.id, "1309275524652073080"),
+            Routes.applicationGuildCommands(lilla.client.user.id, "1309275524652073080"),
             { body: commands }
         );
 
         await rest_client.put(
-            Routes.applicationCommands(_.client.user.id),
+            Routes.applicationCommands(lilla.client.user.id),
             { body: commands }
         );
 

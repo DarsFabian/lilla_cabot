@@ -1,5 +1,6 @@
 import { CacheType, Client, Events, Interaction } from "discord.js";
 import { config } from "dotenv";
+import { Lilla } from "../types/lilla";
 
 const load_commands = require("./commands/commands");
 const questions_emb = require("../questions/prog_emb.json");
@@ -15,25 +16,25 @@ const client: Client = new Client({
     intents: ["DirectMessages", "DirectMessageTyping", "GuildMembers", "GuildMessageTyping", "GuildMessages", "GuildModeration", "GuildPresences", "Guilds", "MessageContent"]
 });
 
-const _: any = {
+const lilla: Lilla = {
     client,
-    commands: [],
+    commands: new Map(),
     TOKEN: token,
     questions_emb: questions_emb.questions
 };
 
 client.on(Events.ClientReady, async () => {
 
-    await load_commands(_);
+    await load_commands(lilla);
 
     console.log("🗽 Lilla Cabot Perry up and running...");
 });
 
 client.on(Events.InteractionCreate, (interaction: Interaction<CacheType>): void => {
     if (!interaction.isChatInputCommand()) return;
-    if (!(interaction.commandName in _.commands)) return;
+    if (!lilla.commands.has(interaction.commandName)) return;
 
-    _.commands[interaction.commandName](interaction, _);
+    lilla.commands.get(interaction.commandName)(interaction, lilla);
 });
 
 try {
