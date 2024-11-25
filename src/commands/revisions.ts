@@ -7,7 +7,7 @@ import {
 import { Lilla } from "../../types/lilla";
 
 const delayOptions = new SlashCommandNumberOption()
-    .setMaxValue(60)
+    .setMaxValue(180)
     .setMinValue(10)
     .setRequired(false)
     .setDescription("Définis le temps (en secondes) avant de recevoir la correction")
