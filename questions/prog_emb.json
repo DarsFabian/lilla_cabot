@@ -139,6 +139,62 @@
         {
             "q": "Que permet de faire le bit PUD du MCUCR?",
             "r": "Activer ou désactiver les pullup internes. Si le bit PUD est mis à 1, alors les pullup internes sont désactivées pour tous les ports, peu importe la configuration de PORTXn et DDRXn."
+        },
+        {
+            "q": "Combien de bits font TIMER1 et TIMER2 respectivement?",
+            "r": "TIMER1 fait 16 bits et TIMER2 fait 8 bits."
+        },
+        {
+            "q": "Que veut dire TCNT? A quoi sert ce registre dans le cadre de TIMER1 et TIMER2?",
+            "r": "Timer Counter. TCNT1 et TIMER2 sont incrémentés à chaque cycle de TIMER1 et TIMER2 respectivement."
+        },
+        {
+            "q": "A quoi sert le registre TIMSK2?",
+            "r": "A définir la cause d'interruption générée par TIMER2. Par défaut en cours on n'utilise que le premier bit, c'est à dire TIOE2 qui permet de générer une interruption quand le TIMER2 déborde."
+        },
+        {
+            "q": "Quel registre sert à définir un prescaler pour TIMER2?",
+            "r": "TCCR2B."
+        },
+        {
+            "q": "A quoi sert un prescaler?",
+            "r": "A ralentir la vitesse d'incrémentation du registre TCNT."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin de définir un prescaler de 8 (on divise la vitesse d'incrémentation par 8) pour TIMER2?",
+            "r": "XXXXX**010**."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin de définir un prescaler de 32 (on divise la vitesse d'incrémentation par 32) pour TIMER2?",
+            "r": "XXXXX**011**."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin de définir un prescaler de 64 (on divise la vitesse d'incrémentation par 64) pour TIMER2?",
+            "r": "XXXXX**100**."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin de définir un prescaler de 128 (on divise la vitesse d'incrémentation par 128) pour TIMER2?",
+            "r": "XXXXX**101**."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin de définir un prescaler de 256 (on divise la vitesse d'incrémentation par 256) pour TIMER2?",
+            "r": "XXXXX**110**."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin de définir un prescaler de 1024 (on divise la vitesse d'incrémentation par 1024) pour TIMER2?",
+            "r": "XXXXX**111**."
+        },
+        {
+            "q": "Que faut-il mettre dans TCCR2B afin d'arrêter l'horloge TIMER2?",
+            "r": "XXXXX**000**."
+        },
+        {
+            "q": "Quels registes faut-il modifier afin d'utiliser TIMER2?",
+            "r": "TCCR2A, TCCR2B, TIMSK2."
+        },
+        {
+            "q": "Quels registres faut-il modifier afin d'utiliser les interruptions sur INT0 ou INT1?",
+            "r": "EICRA et EIMSK."
         }
     ]
 }
